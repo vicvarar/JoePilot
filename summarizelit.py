@@ -9,12 +9,9 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from docx2python import docx2python
 
-# Add your own OpenAI API key
-from dotenv import load_dotenv
 
 from pathlib import Path
 
-load_dotenv()
 
 openai.api_key = os.getenv("AZURE_OPENAI_KEY")
 openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT") 
