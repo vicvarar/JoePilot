@@ -86,11 +86,14 @@ def main():
         text = docx2python(uploaded_file)
 
         # 5. Process Word doc
-        text = re.sub(r'----.*?----', '', text.text)
+        text = re.sub(r'----?.*?----?', '', text.text)
         text = re.sub(r'[><]', '', text)
         text = re.sub (r"\(.*?\)", "", text)
         text = re.sub (r"[0-9:\n]+", "", text)
         text = re.sub (r"\s*\n{2,}\s*", "", text)
+        text = re.sub(r"[^a-zA-Z0-9]/g", "", text)
+        text = re.sub(r'. -- .', '', text)
+        text = re.sub(r"Conf Room /", "",text)
 
         summarized_content = summary_of_summaries(text)
 
